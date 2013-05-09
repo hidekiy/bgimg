@@ -1,4 +1,4 @@
-use 5.014;
+use 5.010;
 use warnings;
 use Imager;
 use IO::File;
