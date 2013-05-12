@@ -1,2 +1,2 @@
 #!/bin/sh
-starman --preload-app --port $PORT
+/app/vendor/perl-deps/bin/starman --preload-app --port $PORT
