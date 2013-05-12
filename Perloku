@@ -1,0 +1,2 @@
+#!/bin/sh
+starman --preload-app --port $PORT

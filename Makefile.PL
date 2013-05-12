@@ -7,4 +7,3 @@ WriteMakefile(
         'Plack' => 0,
     },
 );
-
