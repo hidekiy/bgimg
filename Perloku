@@ -1,3 +1,5 @@
 #!/bin/sh
-echo "PATH: $PATH"
-/app/vendor/perl/bin/perl /app/vendor/perl-deps/bin/starman --preload-app --port $PORT
+export PATH="/app/vendor/perl/bin:/app/vendor/perl-deps/bin:$PATH"
+export PERL5OPT="-Mlocal::lib=/app/vendor/perl-deps"
+echo "PATH: $PATH, PERL5OPT: $PERL5OPT"
+starman --preload-app --port $PORT
