@@ -1,5 +1,4 @@
 #!/bin/sh
 
 echo "PATH: $PATH, PERL5OPT: $PERL5OPT"
-perl $(which starman) --preload-app --port $PORT
-
+perl $(which starman) --preload-app --port $PORT --workers 4
