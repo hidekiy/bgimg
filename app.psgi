@@ -9,21 +9,18 @@ my $app = sub {
 
 	my $req = Plack::Request->new($env);
 	my $res;
+	my $textType = 'text/plain; charset=utf-8';
 
-	if ($req->path eq '/') {
-		$res = $req->new_response(
-			200,
-			['Content-Type' => 'text/plain; charset=utf-8'],
-			'ok, ' . $]
-		);
+	if ($req->path eq '/ok') {
+		$res = $req->new_response;
+		$res->content_type($textType);
+		$res->body('ok');
 	} elsif ($req->path eq '/img') {
 		$res = get_img_response($req);
 	} else {
-		$res = $req->new_response(
-			404,
-			['Content-Type' => 'text/plain; charset=utf-8'],
-			'not found'
-		);
+		$res = $req->new_response(404);
+		$res->content_type($textType);
+		$res->body('not found');
 	}
 
 	return $res->finalize;
@@ -32,14 +29,9 @@ my $app = sub {
 sub get_img_response {
 	my ($req) = @_;
 
-	my $res = $req->new_response(
-		200,
-		[
-			'Content-Type' => 'image/png',
-			'Cache-Control' => 'private, max-age=600',
-		]
-	);
-
+	my $res = $req->new_response;
+	$res->content_type('image/png');
+	$res->header('Cache-Control' => 'private, max-age=600');
 	$res->body(get_img_fh());
 
 	return $res;
