@@ -4,24 +4,27 @@ use Imager;
 use IO::File;
 use Plack::Request;
 
+my $textType = 'text/plain; charset=utf-8';
+my $statusOk = 200;
+my $statusNotFound = 404;
+
 my $app = sub {
 	my ($env) = @_;
 
 	my $req = Plack::Request->new($env);
-	my $res->new_response;
-	my $textType = 'text/plain; charset=utf-8';
+	my $res = $req->new_response;
 
 	if ($req->path eq '/ok') {
-		$res->status(200);
+		$res->status($statusOk);
 		$res->content_type($textType);
 		$res->body('ok');
 	} elsif ($req->path eq '/img') {
-		$res->status(200);
+		$res->status($statusOk);
 		$res->content_type('image/png');
 		$res->header('Cache-Control' => 'private, max-age=600');
 		$res->body(get_img_fh());
 	} else {
-		$res->status(404);
+		$res->status($statusNotFound);
 		$res->content_type($textType);
 		$res->body('not found');
 	}
