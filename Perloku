@@ -1,7 +1,6 @@
 #!/bin/sh
 
 export PATH="/app/vendor/perl/bin:/app/vendor/perl-deps/bin:$PATH"
-export PERL5OPT="-Mlocal::lib=/app/vendor/perl-deps"
-starman="$(which starman)"
-echo "PORT=$PORT, PATH=$PATH, PERL5OPT=$PERL5OPT, starman=$starman"
-perl "$starman" --preload-app --port "$PORT" --workers 4
+echo "PATH=$PATH, PORT=$PORT"
+env PERL5OPT="-Mlocal::lib=/app/vendor/perl-deps" \
+	perl "$(which starman)" --preload-app --port "$PORT" --workers 4
