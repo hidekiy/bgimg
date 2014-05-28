@@ -8,7 +8,7 @@ my $textType = 'text/plain; charset=utf-8';
 my $statusOk = 200;
 my $statusNotFound = 404;
 
-my $app = sub {
+sub app {
 	my ($env) = @_;
 
 	my $req = Plack::Request->new($env);
@@ -30,7 +30,7 @@ my $app = sub {
 	}
 
 	return $res->finalize;
-};
+}
 
 sub get_img_fh {
 	my ($xsize, $ysize) = (60, 60);
@@ -68,4 +68,4 @@ sub get_img_fh {
 	return $fh;
 }
 
-$app;
+\&app;
