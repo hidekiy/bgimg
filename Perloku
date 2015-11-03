@@ -1,7 +1,0 @@
-#!/bin/sh
-set -eu
-export PATH="/app/vendor/perl/bin:/app/vendor/perl-deps/bin:$PATH"
-echo "PATH=$PATH, PORT=$PORT"
-perl -v
-perl -Mlocal::lib=/app/vendor/perl-deps "$(which starman)" \
-	--preload-app --port "$PORT" --workers 4
