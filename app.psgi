@@ -1,5 +1,4 @@
-use 5.010;
-use warnings;
+use 5.012;
 use Imager;
 use IO::File;
 use Plack::Request;

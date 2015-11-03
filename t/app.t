@@ -1,3 +1,4 @@
+use 5.012;
 use HTTP::Request;
 use HTTP::Request::Common;
 use Plack::Test;
