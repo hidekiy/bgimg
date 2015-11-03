@@ -9,8 +9,8 @@ test_psgi $app, sub {
     my $cb = shift;
     my $res = $cb->(GET '/ok');
 
-    is $res->code, 200;
-    ok $res->content, 'ok';
+    is($res->code, 200);
+    ok($res->content, 'ok');
 };
 
 test_psgi $app, sub {
