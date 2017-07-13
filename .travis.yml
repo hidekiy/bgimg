@@ -5,3 +5,4 @@ perl:
 deploy:
   provider: heroku
   app: bgimg-3746
+  api_key: $HEROKU_API_KEY
