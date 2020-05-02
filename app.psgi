@@ -12,11 +12,10 @@ sub app {
 
 	my $req = Plack::Request->new($env);
 
-	if ($req->path eq '/ok') {
+	if ($req->path eq '/robots.txt') {
 		my $res = $req->new_response;
 		$res->status(STATUS_OK);
 		$res->content_type(TYPE_TEXT);
-		$res->body('ok');
 		return $res->finalize;
 	}
 
