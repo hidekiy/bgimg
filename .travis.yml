@@ -1,7 +1,10 @@
+os: linux
+dist: focal
 language: perl
 perl:
-- 5.18
+- '5.30.0'
 deploy:
   provider: heroku
+  strategy: api
   app: bgimg-3746
   api_key: $HEROKU_API_KEY
